@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GameVault – Free & Open-Source PC Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#05050a;--panel:#0d0d18;--p2:#14142a;--line:#24243d;--tx:#ecebf5;--mut:#9a98b5;--p:#8b5cf6;--b:#3b82f6;--grad:linear-gradient(120deg,#8b5cf6,#3b82f6);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+body{background:radial-gradient(900px 500px at 85% -10%,#3b1d7a55,transparent),radial-gradient(700px 400px at -10% 8%,#1d3f8a44,transparent),var(--bg);background-attachment:fixed;color:var(--tx);font:15px/1.6 Inter,system-ui,sans-serif;min-height:100vh}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#05050af2;z-index:60}
+h1,h2,h3,.logo{font-family:Rajdhani,Inter,sans-serif}
+.w{max-width:1280px;margin:auto;padding:0 20px}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:#05050acc;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nv{display:flex;align-items:center;gap:16px;height:66px}
+.logo{font-weight:700;font-size:28px;letter-spacing:2px;color:#fff;text-decoration:none}
+.logo b,.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sr{flex:1;max-width:440px;margin-left:auto;position:relative}
+.in{width:100%;background:var(--p2);border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:10px 14px;font:inherit;outline:0;transition:.2s}
+.in:focus{border-color:var(--p);box-shadow:0 0 0 3px #8b5cf633}
+nav{display:flex;gap:4px}nav a{color:var(--mut);text-decoration:none;padding:8px 14px;border-radius:8px;font-weight:600;transition:.2s}nav a:hover,nav a.on{color:#fff;background:var(--p2)}
+.bg{display:none;background:0;border:1px solid var(--line);color:#fff;border-radius:8px;width:40px;height:40px;font-size:20px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--grad);color:#fff;border:0;border-radius:10px;padding:12px 22px;font:600 14px Inter,sans-serif;cursor:pointer;text-decoration:none;transition:.25s;box-shadow:0 6px 26px #8b5cf645}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}.btn.g{background:#ffffff0d;border:1px solid #ffffff30;box-shadow:none}.btn.d{background:#dc2626;box-shadow:none}.btn.s{padding:8px 14px;font-size:13px}.btn.f{width:100%;margin-top:12px}
+.hero{position:relative;border-radius:22px;overflow:hidden;min-height:400px;display:flex;align-items:flex-end;border:1px solid var(--line);margin:26px 0 8px;animation:fade .6s}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#05050af0 8%,#05050a66 62%,transparent),linear-gradient(0deg,#05050a 0,transparent 55%)}
+.hc{position:relative;z-index:1;padding:38px;max-width:640px;animation:up .8s both}
+.badge{display:inline-block;background:#8b5cf62e;border:1px solid #8b5cf680;color:#c4b0ff;border-radius:99px;padding:2px 12px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.05;margin:10px 0}
+.hc p{color:#cfcde6;margin-bottom:20px}.acts{display:flex;gap:12px;flex-wrap:wrap}
+.lay{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;align-items:start;margin-top:20px}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 82px);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
+.side h4{font:700 13px Inter;letter-spacing:1.5px;color:var(--mut);padding:6px 12px 8px;text-transform:uppercase}
+.side button{display:flex;justify-content:space-between;gap:14px;width:100%;background:0;border:0;color:var(--mut);padding:9px 12px;border-radius:8px;cursor:pointer;font:inherit;white-space:nowrap;transition:.2s}
+.side button:hover{color:#fff;background:var(--p2)}.side .on{color:#fff;background:linear-gradient(120deg,#8b5cf638,#3b82f638)}
+.sec{margin:0 0 38px}.sh{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}
+h2{font-size:28px;padding-left:14px;border-left:4px solid var(--p);line-height:1.1}
+.gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:.3s;animation:up .5s both}
+.card:hover{transform:translateY(-6px);border-color:var(--p);box-shadow:0 16px 44px #8b5cf630}
+.cv{aspect-ratio:16/9;overflow:hidden}.cv svg,.big svg,.gal svg{width:100%;height:100%;display:block}.cv svg{transition:.5s}.card:hover .cv svg{transform:scale(1.09)}
+.cb{padding:14px 16px 16px}.cb h3{font-size:21px;line-height:1.2}.m{color:var(--mut);font-size:13px}
+.empty{padding:50px;text-align:center;color:var(--mut);background:var(--panel);border:1px dashed var(--line);border-radius:16px}
+.pg{padding-top:22px;padding-bottom:40px;animation:fade .5s}.back{color:var(--mut);text-decoration:none;display:inline-block;margin-bottom:16px}.back:hover{color:#fff}
+.dh{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:30px;align-items:start}
+.big{border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;box-shadow:0 20px 60px #8b5cf62a}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chips span{background:var(--p2);border:1px solid var(--line);border-radius:8px;padding:3px 12px;font-size:13px}
+.ds{color:#cfcde6;margin-bottom:20px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:22px}.panel h2{margin-bottom:16px;font-size:24px}
+.ft{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}.ft div::before{content:"✦ ";color:var(--p)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}.cols .panel{margin-top:22px}
+.tb{width:100%;border-collapse:collapse}.tb td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}.tb td:first-child{color:var(--mut);width:36%}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.gal div{border-radius:12px;overflow:hidden;aspect-ratio:16/9;cursor:zoom-in;border:1px solid var(--line);transition:.3s}.gal div:hover{transform:scale(1.03);border-color:var(--p)}
+.lb{position:fixed;inset:0;background:#000d;z-index:100;display:grid;place-items:center;padding:20px;animation:fade .2s;cursor:zoom-out}.lb div{width:min(1000px,100%);border-radius:16px;overflow:hidden}
+.splash{position:fixed;inset:0;background:var(--bg);z-index:200;display:grid;place-content:center;justify-items:center;gap:18px;transition:opacity .45s}.splash.out{opacity:0;pointer-events:none}
+.splash .logo{font-size:52px;animation:pulse 1.2s infinite}.bar{width:190px;height:3px;background:var(--line);border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;width:40%;background:var(--grad);animation:ld 1s infinite ease-in-out}
+.sk{background:linear-gradient(90deg,var(--panel) 25%,var(--p2) 50%,var(--panel) 75%);background-size:200% 100%;animation:sh 1.2s infinite;border-radius:16px;height:250px}
+.at{width:100%;border-collapse:collapse}.at td,.at th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}.at th{color:var(--mut);font-size:12px;letter-spacing:1px;text-transform:uppercase}.at .ac{display:flex;gap:6px;justify-content:flex-end}.tw{overflow-x:auto}
+.md{position:fixed;inset:0;background:#000c;z-index:100;display:grid;place-items:center;padding:16px;overflow:auto;animation:fade .2s}.md form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;width:min(720px,100%);max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.md label{display:grid;gap:4px;font-size:13px;color:var(--mut)}.md .full{grid-column:1/-1}.err{color:#f87171;font-size:13px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:28px 0;color:var(--mut);font-size:13px;text-align:center}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}@keyframes fade{from{opacity:0}}@keyframes sh{to{background-position:-200% 0}}@keyframes ld{from{margin-left:-40%}to{margin-left:100%}}@keyframes pulse{50%{opacity:.6}}
+@media(max-width:860px){.lay{grid-template-columns:1fr}.side{position:static;display:flex;overflow-x:auto;gap:4px;padding:8px}.side h4{display:none}.side button{width:auto;flex:none}.dh,.cols{grid-template-columns:1fr}.hc{padding:24px}}
+@media(max-width:760px){.nv{flex-wrap:wrap;height:auto;padding:10px 0}.sr{order:3;max-width:none;flex-basis:100%}.bg{display:block;margin-left:auto}nav{display:none;order:4;flex-basis:100%;flex-direction:column}nav.open{display:flex}.gal{grid-template-columns:1fr 1fr}.md form{grid-template-columns:1fr}.gr{grid-template-columns:repeat(2,1fr);gap:12px}.cb{padding:10px}.cb h3{font-size:18px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ===== v2 premium polish layer ===== */
+:root{--grad:linear-gradient(115deg,#7c3aed,#4f46e5 55%,#2563eb)}
+body{background:radial-gradient(1000px 520px at 85% -10%,#4c1d9566,transparent),radial-gradient(800px 460px at -10% 6%,#1e40af4d,transparent),radial-gradient(600px 400px at 50% 110%,#5b21b633,transparent),var(--bg);background-attachment:fixed}
+h1{letter-spacing:-.5px}h2{border:0;padding:0;font-size:30px;letter-spacing:.3px}h2::after{content:"";display:block;width:44px;height:3px;border-radius:3px;background:var(--grad);margin-top:8px}
+.nav{background:#07070fcc;box-shadow:0 10px 40px #0008}.nav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,#8b5cf6,#3b82f6,transparent);opacity:.7}
+.nav .logo::before{content:"◆";margin-right:8px;font-size:17px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;vertical-align:2px}
+.sr .in{padding:11px 38px 11px 42px;border-radius:99px;background:var(--p2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a98b5' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") 15px center/17px no-repeat}
+.sr .in::-webkit-search-cancel-button{display:none}.x{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:0;border:0;color:var(--mut);cursor:pointer;padding:6px 8px}.x:hover{color:#fff}
+nav a.on{background:linear-gradient(120deg,#8b5cf633,#3b82f633);color:#fff}
+.btn{background:var(--grad)}.btn:active{transform:scale(.97)}.btn i{font-style:normal;transition:.25s}.btn:hover i{transform:translateX(4px)}
+.hero{min-height:440px;border-color:#8b5cf64d;box-shadow:0 30px 80px #4c1d9538}.hero h1{font-size:clamp(44px,7vw,78px)}
+.hero>img,.cv img,.big img{width:100%;height:100%;object-fit:cover;display:block}.hero>img{position:absolute;inset:0}
+.aur{position:absolute;inset:-20%;background:radial-gradient(40% 40% at 25% 30%,#7c3aed70,transparent),radial-gradient(35% 35% at 78% 62%,#2563eb59,transparent);mix-blend-mode:screen;animation:drift 14s ease-in-out infinite alternate}
+.hc .chips{margin:6px 0 14px}.hc p{font-size:16px}
+.stats{position:absolute;right:26px;bottom:26px;z-index:1;display:flex;gap:10px}.stats div{background:#ffffff10;border:1px solid #ffffff24;backdrop-filter:blur(10px);border-radius:14px;padding:10px 18px;text-align:center}.stats b{display:block;font:700 26px Rajdhani}.stats span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
+.sec{animation:up .6s both}
+.card{border-radius:18px;background:linear-gradient(180deg,#13132200,#0b0b15),#0d0d18;display:flex;flex-direction:column;outline:0}
+.card:hover,.card:focus-visible{border-color:#8b5cf6b0;box-shadow:0 22px 54px #6d3df033,0 0 0 1px #8b5cf655}
+.cv{position:relative}.cv::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0d0d18,transparent 55%);pointer-events:none}
+.tag{position:absolute;z-index:1;left:10px;top:10px;background:#05050acc;backdrop-filter:blur(8px);border:1px solid #ffffff24;border-radius:99px;padding:2px 11px;font-size:11px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
+.cb{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px}.cb h3{font-size:22px}
+.dsc{color:var(--mut);font-size:13px;margin:6px 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mt{display:flex;gap:8px;margin-top:auto}.mt span{background:#ffffff0d;border:1px solid var(--line);border-radius:6px;padding:1px 9px;font-size:12px;color:#c4c2de}.card .btn{margin-top:14px}
+.pg{position:relative}.bd{position:absolute;left:0;right:0;top:0;height:480px;z-index:-1;opacity:.4;filter:blur(55px) saturate(1.4);overflow:hidden;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}.bd svg,.bd img{width:100%;height:100%;object-fit:cover}
+.dl{background:linear-gradient(180deg,#15152acc,#0d0d18cc);border:1px solid var(--line);border-radius:20px;padding:26px;backdrop-filter:blur(10px)}.dl h1{font-size:clamp(34px,4vw,48px)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.facts div{background:#ffffff08;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center}.facts span{display:block;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}.facts b{font:700 17px Rajdhani}
+.panel{border-radius:18px;transition:.3s}.panel:hover{border-color:#8b5cf655}.ft div{background:#ffffff08;border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.dock{display:none}
+@keyframes drift{to{transform:translate(4%,6%) scale(1.1)}}
+@media(min-width:861px) and (max-width:1100px){.lay{grid-template-columns:190px minmax(0,1fr);gap:20px}.gr{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}.stats{display:none}}
+@media(max-width:860px){.side button{border:1px solid var(--line);border-radius:99px}.hero{min-height:380px}.stats{display:none}.facts{grid-template-columns:repeat(2,1fr)}.dl{padding:20px}}
+@media(max-width:760px){.dsc{display:none}.pg{padding-bottom:96px}.hero h1{font-size:44px}.dock{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#05050af2;backdrop-filter:blur(14px);border-top:1px solid var(--line)}.dock .btn{flex:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ===== v3 final polish ===== */
+body{overflow-x:clip}
+.side{min-width:0;overflow:visible}.side button{min-width:0;white-space:normal;align-items:center}.side button span:first-child{overflow:hidden;text-overflow:ellipsis}.side button span:last-child{flex:none;background:#ffffff10;border-radius:99px;padding:0 9px;font-size:12px}
+.card{position:relative;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none;z-index:3}
+.card:hover::before,.card:focus-visible::before{opacity:1}.card:hover,.card:focus-visible{transform:translateY(-8px) scale(1.015)}
+.cv{background:#0d0d18}.cv svg,.cv img{transition:transform .8s cubic-bezier(.2,.8,.2,1)}.card:hover .cv svg,.card:hover .cv img{transform:scale(1.1)}
+.cv::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(115deg,transparent 35%,#ffffff30 50%,transparent 65%);transform:translateX(-120%);transition:transform .9s}.card:hover .cv::before{transform:translateX(120%)}
+.go{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-30%);opacity:0;background:#05050acc;backdrop-filter:blur(8px);border:1px solid #ffffff33;border-radius:99px;padding:6px 16px;font-size:13px;font-weight:600;transition:.4s;pointer-events:none}.card:hover .go{opacity:1;transform:translate(-50%,-50%)}
+.rk{position:absolute;z-index:2;right:12px;top:6px;font:700 24px Rajdhani;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 4px #000)}
+.sh .acts{align-items:center}
+.big{position:relative}.big::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #ffffff22,inset 0 -90px 80px -50px #05050aaa;pointer-events:none}
+.dlbox{margin-top:6px}.big2{flex-direction:column;width:100%;padding:16px 22px;font-size:17px;gap:2px;position:relative;overflow:hidden;animation:glow 3s ease-in-out infinite}.big2 small{font-weight:400;opacity:.85;font-size:12px}
+.big2::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,#ffffff40 50%,transparent 65%);transform:translateX(-120%);transition:transform .8s}.big2:hover::after{transform:translateX(120%)}
+.dlbox .acts{margin-top:12px}.dlbox .acts .btn{flex:1}.tr{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:6px;color:var(--mut);font-size:13px}.tr li::before{content:"✓ ";color:#34d399;font-weight:700}
+@keyframes glow{50%{box-shadow:0 8px 40px #8b5cf685}}
+@media(max-width:860px){.side{display:flex;flex-wrap:wrap;overflow:visible;gap:8px;padding:12px}.side button{width:auto;flex:0 1 auto}}
+@media(max-width:760px){.gr{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.sh{flex-wrap:wrap;gap:8px}.btn.s{padding:10px 14px}.hc{padding:22px 18px}.hc .acts .btn{flex:1;min-width:140px}.dl,.panel{padding:18px}.at td,.at th{padding:8px 6px;font-size:13px}.md{padding:8px}.md form{padding:16px}h2{font-size:25px}.nv{gap:10px}.cb{padding:12px}.cb h3{font-size:19px}.mt span{font-size:11px}.rk{font-size:19px}.go{display:none}}
+@media(max-width:380px){.logo{font-size:24px}}
+</style></head>
+<body><div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const {useState,useEffect}=React, html=htm.bind(React.createElement);
+
+/* ===== src/data/games.js — only free / open-source games that permit redistribution ===== */
+const K=['os','cpu','ram','gpu','disk'];
+const G=(id,title,genre,year,size,dev,lic,hue,url,desc,feat,req,pop,trend,added)=>({id,title,genre,year,size,dev,lic,hue,url,desc,feat:feat.split('|'),
+  req:Object.fromEntries(('Windows · Linux · macOS (varies by release)|'+req).split('|').map((v,i)=>[K[i],v])),ver:'Latest stable',pop,trend,added,featured:id==='0ad'});
+const SEED=[
+G('0ad','0 A.D.','Strategy',2009,'~1.5 GB','Wildfire Games','GPL-2.0+ / CC-BY-SA',28,'https://play0ad.com/download/','A free, open-source historical real-time strategy game set in the ancient world, with deep economy and large-scale battles.','Ancient civilizations|Skirmish, campaigns & multiplayer|Economy-driven base building|Moddable and community-supported','2 GHz dual-core|4 GB RAM|OpenGL 3.3 GPU|~3 GB free',10,9,'2026-10-02'),
+G('supertuxkart','SuperTuxKart','Racing',2006,'~700 MB','SuperTuxKart Team','GPL-3.0',285,'https://supertuxkart.net/Download','A free 3D kart racer with open tracks, characters, power-ups and online multiplayer.','Local & online multiplayer|Story mode and Grand Prix|Battle arenas|Add-on karts and tracks','Dual-core 2 GHz|2 GB RAM|OpenGL 3.3 GPU|~1 GB free',9,7,'2026-10-20'),
+G('xonotic','Xonotic','Shooter',2011,'~1 GB','Xonotic Team','GPL-2.0+',350,'https://xonotic.org/download/','A fast-paced, free arena first-person shooter with smooth movement, many weapons and a lively server community.','Arena deathmatch & CTF|Bots for offline play|Dozens of maps|Open-source and moddable','2 GHz dual-core|2 GB RAM|OpenGL 3 GPU|~1.5 GB free',8,6,'2026-09-14'),
+G('openra','OpenRA','Strategy',2010,'~100 MB','OpenRA Team','GPL-3.0',215,'https://www.openra.net/download/','An open-source engine that brings classic real-time strategy gameplay to modern PCs with online play.','Classic RTS mods|Online matchmaking|Replays & observer mode|Active modding scene','Dual-core 2 GHz|2 GB RAM|OpenGL 3 GPU|~500 MB free',8,8,'2026-08-30'),
+G('openttd','OpenTTD','Simulation',2004,'~30 MB','OpenTTD Team','GPL-2.0',165,'https://www.openttd.org/downloads/openttd-releases/latest','A free transport-tycoon simulation: build road, rail, sea and air networks and grow a logistics empire.','Trains, trucks, ships & planes|Multiplayer|Huge map sizes|Scripts and add-ons','1 GHz CPU|1 GB RAM|Any 2D-capable GPU|~200 MB free',9,5,'2026-07-11'),
+G('mindustry','Mindustry','Simulation',2017,'~100 MB','Anuken','GPL-3.0',32,'https://mindustrygame.github.io/','A factory-building tower-defense hybrid. Automate resource chains and defend against waves.','Automation & logistics|Campaign and custom games|Co-op multiplayer|Mod support','Dual-core CPU|2 GB RAM|OpenGL 2 GPU|~200 MB free',8,9,'2026-11-01'),
+G('luanti','Luanti','Sandbox',2011,'~30 MB','Luanti Developers','LGPL-2.1+',140,'https://www.luanti.org/downloads/','An open-source voxel game engine. Play community games or build your own with Lua mods.','Thousands of community mods|Multiplayer servers|Lua scripting|Lightweight','Single-core 1.5 GHz|1 GB RAM|OpenGL 2 GPU|~100 MB free',8,6,'2026-06-03'),
+G('veloren','Veloren','RPG',2018,'~200 MB','Veloren Team','GPL-3.0',12,'https://veloren.net/','A multiplayer voxel RPG inspired by Cube World and Zelda, set in a procedurally generated world.','Open multiplayer world|Combat, crafting & exploration|Procedural terrain|Community-driven','Quad-core CPU|8 GB RAM|Vulkan-capable GPU|~1 GB free',7,10,'2026-10-28'),
+G('cdda','Cataclysm: Dark Days Ahead','RPG',2013,'~150 MB','CDDA Community','CC-BY-SA 3.0',100,'https://cataclysmdda.org/','A free turn-based survival roguelike set in a post-apocalyptic world. Scavenge, craft and survive.','Deep survival simulation|Crafting & construction|Tilesets and mods|Huge sandbox','1 GHz CPU|1 GB RAM|Basic graphics|~300 MB free',7,5,'2026-05-21'),
+G('wesnoth','Battle for Wesnoth','Strategy',2003,'~250 MB','Wesnoth Project','GPL-2.0+',130,'https://www.wesnoth.org/#download','A free turn-based fantasy strategy game with campaigns, multiplayer and thousands of user-made add-ons.','Single-player campaigns|Online multiplayer|Map & campaign editor|Large add-on library','1 GHz CPU|1 GB RAM|Basic OpenGL GPU|~500 MB free',9,4,'2026-04-09'),
+G('hedgewars','Hedgewars','Action',2007,'~150 MB','Hedgewars Team','GPL-2.0',45,'https://hedgewars.org/download.html','A free turn-based artillery game: command a team of hedgehogs in comedic, explosive battles.','Local & online play|Many weapons & utilities|Map and theme variety|Hot-seat multiplayer','1 GHz CPU|1 GB RAM|OpenGL 2 GPU|~300 MB free',7,5,'2026-03-15'),
+G('wz2100','Warzone 2100','Strategy',1999,'~100 MB','Warzone 2100 Project','GPL-2.0+',200,'https://wz2100.net/','A classic real-time strategy game, now open source, with a deep research tree and customizable units.','Campaign & skirmish|Tech research tree|Multiplayer|Unit design','Dual-core CPU|2 GB RAM|OpenGL 3 GPU|~500 MB free',7,4,'2026-02-02')];
+const KEY='gamevault-games-v1';
+const load=()=>{try{const s=localStorage.getItem(KEY);if(s)return JSON.parse(s)}catch(e){}return SEED};
+const save=g=>{try{localStorage.setItem(KEY,JSON.stringify(g))}catch(e){}};
+
+/* ===== src/hooks/useRoute.js ===== */
+const parse=()=>{const h=location.hash.slice(1);return h==='admin'?{p:'admin'}:h.startsWith('game-')?{p:'game',id:h.slice(5)}:{p:'home'}};
+const go=h=>{location.hash=h};
+function useRoute(){const[r,s]=useState(parse);useEffect(()=>{const f=()=>{s(parse());scrollTo(0,0)};addEventListener('hashchange',f);return()=>removeEventListener('hashchange',f)},[]);return r}
+
+/* ===== src/components/Art.jsx — procedural cover & gallery art (no remote images) ===== */
+const hs=s=>[...s].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
+function Art({g,v=0}){
+  const[bad,setBad]=useState(0);if(g.img&&!bad&&!v)return html`<img src=${g.img} alt=${g.title+' cover art'} loading="lazy" onError=${()=>setBad(1)}/>`;let s=hs(g.id)+v*977;const r=()=>(s=(s*9301+49297)%233280)/233280,h=g.hue,id='a'+g.id+v;
+  const t=g.title.split(':')[0].toUpperCase(),fs=Math.min(46,330/(t.length*.62));
+  const c=Array.from({length:6},(_,i)=>html`<circle key=${i} cx=${r()*400} cy=${r()*225} r=${20+r()*90} fill=${`hsl(${h+r()*80},85%,${50+r()*15}%)`} opacity=${.18+r()*.22}/>`);
+  return html`<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label=${g.title+' artwork'}>
+  <defs><linearGradient id=${id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor=${`hsl(${h},70%,20%)`}/><stop offset="1" stopColor=${`hsl(${h+50},80%,7%)`}/></linearGradient></defs>
+  <rect width="400" height="225" fill=${`url(#${id})`}/>${c}
+  <path d=${`M0 ${150+r()*40} L${100+r()*80} ${90+r()*40} L${220+r()*60} ${140+r()*40} L${320+r()*60} ${70+r()*50} L400 ${130+r()*40} V225 H0Z`} fill="#05050a" opacity=".55"/>
+  ${Array.from({length:14},(_,i)=>html`<circle key=${'s'+i} cx=${r()*400} cy=${r()*120} r=${.6+r()*1.2} fill="#fff" opacity=${.25+r()*.5}/>`)}
+  <radialGradient id=${id+'o'}><stop offset="0" stopColor=${`hsl(${h+30},95%,70%)`} stopOpacity=".85"/><stop offset="1" stopColor=${`hsl(${h+30},95%,60%)`} stopOpacity="0"/></radialGradient>
+  <circle cx=${60+r()*280} cy=${50+r()*40} r="75" fill=${`url(#${id}o)`}/>
+  <path d=${`M0 ${178+r()*20} L${90+r()*60} ${135+r()*20} L${200+r()*60} ${170+r()*20} L${300+r()*50} ${120+r()*25} L400 ${165+r()*20} V225 H0Z`} fill=${`hsl(${h},60%,6%)`} opacity=".85"/>
+  <radialGradient id=${id+'v'} cx=".5" cy=".5" r=".75"><stop offset=".55" stopColor="#000" stopOpacity="0"/><stop offset="1" stopColor="#000" stopOpacity=".6"/></radialGradient><rect width="400" height="225" fill=${`url(#${id}v)`}/>
+  <text x="202" y="121" textAnchor="middle" fontFamily="Rajdhani,sans-serif" fontWeight="700" fontSize=${fs} fill="#000" opacity=".45" letterSpacing="3">${t}</text>
+  <text x="200" y="118" textAnchor="middle" fontFamily="Rajdhani,sans-serif" fontWeight="700" fontSize=${fs} fill="#fff" opacity=".95" letterSpacing="3">${t}</text>
+  <text x="200" y="144" textAnchor="middle" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" letterSpacing="4" fill="#fff" opacity=".6">${(g.genre||'').toUpperCase()}</text></svg>`}
+
+/* ===== src/components/ — Nav, Splash, Skeleton, Card, Section, Sidebar, Hero ===== */
+function Nav({q,setQ,page,reset}){const[o,setO]=useState(false);
+  return html`<header className="nav"><div className="w nv"><a className="logo" href="#home" onClick=${reset}>GAME<b>VAULT</b></a>
+  <div className="sr"><input className="in" type="search" placeholder="Search games, genres, developers…" aria-label="Search games" value=${q} onChange=${e=>{setQ(e.target.value);if(page!=='home')go('home')}}/>${q&&html`<button className="x" aria-label="Clear search" onClick=${()=>setQ('')}>✕</button>`}</div>
+  <nav className=${o?'open':''} onClick=${()=>setO(false)}><a href="#home" className=${page!=='admin'?'on':''} onClick=${reset}>Library</a><a href="#admin" className=${page==='admin'?'on':''}>Admin</a></nav>
+  <button className="bg" aria-label="Menu" onClick=${()=>setO(!o)}>${o?'✕':'☰'}</button></div></header>`}
+const Splash=({out})=>html`<div className=${'splash'+(out?' out':'')}><div className="logo">GAME<b>VAULT</b></div><div className="bar"><i/></div></div>`;
+const Skeleton=()=>html`<div className="w" style=${{paddingTop:26}}><div className="sk" style=${{height:340,marginBottom:24}}/><div className="gr">${[0,1,2,3].map(i=>html`<div key=${i} className="sk"/>`)}</div></div>`;
+const Card=({g,i,rank})=>html`<article className="card" tabIndex="0" style=${{animationDelay:i*70+'ms'}} onKeyDown=${e=>e.key==='Enter'&&go('game-'+g.id)} onClick=${()=>go('game-'+g.id)}>
+  <div className="cv"><${Art} g=${g}/><span className="tag">${g.genre}</span>${rank>0&&html`<span className="rk">#${rank}</span>`}<span className="go">View →</span></div><div className="cb"><h3>${g.title}</h3><p className="dsc">${g.desc}</p><div className="mt"><span>${g.year}</span><span>${g.size}</span></div>
+  <button className="btn s f" onClick=${e=>{e.stopPropagation();go('game-'+g.id)}}>View Details <i>→</i></button></div></article>`;
+const Sec=({title,sub,items,rank,more})=>html`<section className="sec"><div className="sh"><h2>${title}</h2><div className="acts">${sub&&html`<span className="m">${sub}</span>`}${more&&html`<button className="btn g s" onClick=${more}>View all →</button>`}</div></div>
+  ${items.length?html`<div className="gr">${items.map((g,i)=>html`<${Card} key=${g.id} g=${g} i=${i} rank=${rank?i+1:0}/>`)}</div>`:html`<div className="empty">No games match your search. Try another keyword or category.</div>`}</section>`;
+const Side=({games,genre,setGenre,setBrowse})=>{const gs=['All',...new Set(games.map(g=>g.genre))].sort((a,b)=>a==='All'?-1:b==='All'?1:a.localeCompare(b));
+  return html`<aside className="side"><h4>Categories</h4>${gs.map(c=>html`<button key=${c} className=${genre===c?'on':''} onClick=${()=>{setGenre(c);setBrowse(true)}}><span>${c}</span><span>${c==='All'?games.length:games.filter(g=>g.genre===c).length}</span></button>`)}</aside>`};
+const Hero=({g,games,onBrowse})=>html`<section className="hero"><${Art} g=${g}/><div className="aur"></div><div className="hc"><span className="badge">★ Featured game</span><h1 className="gt">${g.title}</h1><div className="chips"><span>${g.genre}</span><span>${g.year}</span><span>${g.size}</span></div>
+  <p>${g.desc}</p><div className="acts"><button className="btn" onClick=${()=>go('game-'+g.id)}>View Details</button><a className="btn g" href=${g.url} target="_blank" rel="noopener noreferrer">⬇ Official download</a><button className="btn g" onClick=${onBrowse}>Browse Library</button></div></div><div className="stats"><div><b>${games.length}</b><span>Games</span></div><div><b>${new Set(games.map(x=>x.genre)).size}</b><span>Categories</span></div><div><b>100%</b><span>Free & open</span></div></div></section>`;
+
+/* ===== src/pages/Home.jsx ===== */
+function Home({games,q,genre,setGenre,browse,setBrowse}){
+  const ql=q.trim().toLowerCase(),list=games.filter(g=>(genre==='All'||g.genre===genre)&&(!ql||[g.title,g.genre,g.desc,g.dev].join(' ').toLowerCase().includes(ql)));
+  const filt=ql||genre!=='All'||browse,feat=games.find(g=>g.featured)||games[0],top=k=>[...games].sort((a,b)=>b[k]-a[k]).slice(0,4);
+  const rec=[...games].sort((a,b)=>b.added.localeCompare(a.added)).slice(0,4);
+  return html`<div className="w">${!filt&&feat&&html`<${Hero} g=${feat} games=${games} onBrowse=${()=>setBrowse(true)}/>`}
+  <div className="lay"><${Side} games=${games} genre=${genre} setGenre=${setGenre} setBrowse=${setBrowse}/><main>
+  ${filt?html`<${Sec} title=${ql?'Results for “'+q+'”':genre==='All'?'All games':genre} sub=${list.length+' game'+(list.length===1?'':'s')} items=${list}/>`
+  :html`<${Sec} title="Recently Added" items=${rec}/><${Sec} title="Popular Games" sub="Top picks" rank=${1} items=${top('pop')} more=${()=>{setGenre('All');setBrowse(true)}}/><${Sec} title="Trending Now" items=${top('trend')}/>`}</main></div></div>`}
+
+function DlBox({g}){const[c,setC]=useState(0);
+  const copy=async()=>{try{await navigator.clipboard.writeText(g.url);setC(1)}catch(e){setC(2)}setTimeout(()=>setC(0),2000)};
+  return html`<div className="dlbox"><a className="btn big2" href=${g.url} target="_blank" rel="noopener noreferrer"><span>⬇ Download ${g.title}</span><small>${g.size} · ${g.ver} · official site</small></a>
+  <div className="acts"><button className="btn g s" onClick=${copy}>${c===1?'✓ Link copied':c===2?'Copy unavailable':'⧉ Copy link'}</button><a className="btn g s" href="#home">← More games</a></div>
+  <ul className="tr"><li>Opens the developer’s official download page</li><li>License: ${g.lic||'see official page'}</li><li>Platforms: ${g.req.os}</li><li>Always verify the file on the official site</li></ul></div>`}
+/* ===== src/pages/Details.jsx ===== */
+function Details({g,games}){
+  useEffect(()=>{const f=e=>e.key==='Escape'&&setLb(null);addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[]);const[lb,setLb]=useState(null),rel=games.filter(x=>x.genre===g.genre&&x.id!==g.id).slice(0,4),L=['Operating system','Processor','Memory','Graphics','Storage'];
+  return html`<div className="w pg"><div className="bd"><${Art} g=${g}/></div><a className="back" href="#home">← Back to library</a>
+  <div className="dh"><div className="big"><${Art} g=${g}/></div><div className="dl"><span className="badge">${g.genre}</span><h1>${g.title}</h1><p className="m">by ${g.dev}</p>
+   <p className="ds" style=${{marginTop:12}}>${g.desc}</p><div className="facts">${[['Size',g.size],['Version',g.ver],['License',g.lic.split(' ')[0]],['Released',g.year]].map(([a,b])=>html`<div key=${a}><span>${a}</span><b>${b}</b></div>`)}</div>
+   <${DlBox} g=${g}/>
+   </div></div>
+  <div className="panel"><h2>Gallery</h2><div className="gal">${[1,2,3].map(v=>html`<div key=${v} onClick=${()=>setLb(v)}><${Art} g=${g} v=${v}/></div>`)}</div>
+   <p className="m" style=${{marginTop:10}}>Generated preview art. See the official site for in-game screenshots.</p></div>
+  <div className="panel"><h2>Features</h2><div className="ft">${g.feat.map(f=>html`<div key=${f}>${f}</div>`)}</div></div>
+  <div className="cols"><div className="panel"><h2>System Requirements</h2><table className="tb"><tbody>${K.map((k,i)=>html`<tr key=${k}><td>${L[i]}</td><td>${g.req[k]}</td></tr>`)}</tbody></table><p className="m" style=${{marginTop:8}}>Approximate minimums. Check the official page for exact figures.</p></div>
+  <div className="panel"><h2>Version Information</h2><table className="tb"><tbody>${[['Version',g.ver],['Developer',g.dev],['License',g.lic],['Original release',g.year],['Download size',g.size],['Added to GameVault',g.added]].map(([a,b])=>html`<tr key=${a}><td>${a}</td><td>${b}</td></tr>`)}</tbody></table></div></div>
+  ${rel.length>0&&html`<div style=${{marginTop:34}}><${Sec} title=${'More '+g.genre} items=${rel}/></div>`}
+  <div className="dock"><a className="btn" href=${g.url} target="_blank" rel="noopener noreferrer">⬇ Download — official site</a></div>${lb&&html`<div className="lb" onClick=${()=>setLb(null)}><div><${Art} g=${g} v=${lb}/></div></div>`}</div>`}
+
+/* ===== src/pages/Admin.jsx — demo admin (data stored in this browser only) ===== */
+const BLANK={id:'',title:'',genre:'Action',year:2026,size:'',dev:'',lic:'',hue:260,url:'https://',desc:'',feat:[],req:{os:'',cpu:'',ram:'',gpu:'',disk:''},ver:'1.0',img:'',pop:5,trend:5,added:new Date().toISOString().slice(0,10),featured:false};
+function Form({g,onSave,onClose}){
+  const[f,setF]=useState(g),[ft,setFt]=useState(g.feat.join('\n')),[err,setErr]=useState('');
+  useEffect(()=>{const k=e=>e.key==='Escape'&&onClose();addEventListener('keydown',k);return()=>removeEventListener('keydown',k)},[]);
+  const set=(k,v)=>setF(p=>({...p,[k]:v})),sr=(k,v)=>setF(p=>({...p,req:{...p.req,[k]:v}}));
+  const sub=e=>{e.preventDefault();if(!f.title.trim()||!f.genre.trim())return setErr('Title and genre are required.');if(f.img&&!/^https:\/\//.test(f.img))return setErr('Cover image must be an https:// URL (or leave it empty).');
+    if(!/^https:\/\/[^\s.\/]+\.[^\s]+$/.test(f.url))return setErr('Enter a valid https:// official download URL.');
+    onSave({...f,title:f.title.trim(),genre:f.genre.trim(),year:+f.year||2026,pop:+f.pop||5,trend:+f.trend||5,feat:ft.split('\n').map(s=>s.trim()).filter(Boolean)})};
+  const T=(k,l,t='text')=>html`<label>${l}<input className="in" type=${t} value=${f[k]??''} onChange=${e=>set(k,e.target.value)}/></label>`;
+  return html`<div className="md"><form onSubmit=${sub}><h2 className="full">${g.id?'Edit game':'Add game'}</h2>
+  ${T('title','Title')}${T('genre','Genre')}${T('year','Release year','number')}${T('size','File size (e.g. ~200 MB)')}${T('ver','Version')}${T('dev','Developer')}${T('lic','License')}${T('url','Official download URL (https)')}${T('img','Cover image URL (optional, https)')}${T('pop','Popularity (1–10)','number')}${T('trend','Trending (1–10)','number')}
+  <label className="full">Description<textarea className="in" rows="3" value=${f.desc} onChange=${e=>set('desc',e.target.value)}/></label>
+  <label className="full">Features (one per line)<textarea className="in" rows="3" value=${ft} onChange=${e=>setFt(e.target.value)}/></label>
+  ${K.map(k=>html`<label key=${k}>Req: ${k.toUpperCase()}<input className="in" value=${f.req[k]} onChange=${e=>sr(k,e.target.value)}/></label>`)}
+  <label>Cover color<input type="range" min="0" max="360" value=${f.hue} onChange=${e=>set('hue',+e.target.value)}/></label>
+  <label><span><input type="checkbox" checked=${f.featured} onChange=${e=>set('featured',e.target.checked)}/> Featured on homepage</span></label>
+  ${err&&html`<p className="err full">${err}</p>`}
+  <div className="acts full"><button className="btn" type="submit">Save game</button><button className="btn g" type="button" onClick=${onClose}>Cancel</button></div></form></div>`}
+function Admin({games,setGames}){
+  const[ed,setEd]=useState(null),[del,setDel]=useState(null);useEffect(()=>{if(!del)return;const t=setTimeout(()=>setDel(null),3000);return()=>clearTimeout(t)},[del]);
+  const save=g=>{let id=g.id;if(!id){const b=g.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'game';id=b;let n=2;while(games.some(x=>x.id===id))id=b+'-'+n++}
+    const ng={...g,id};setGames(p=>{const o=g.id?p.map(x=>x.id===id?ng:x):[ng,...p];return ng.featured?o.map(x=>({...x,featured:x.id===id})):o});setEd(null)};
+  return html`<div className="w pg"><div className="sh"><h2>Admin Dashboard</h2><div className="acts"><button className="btn" onClick=${()=>setEd(BLANK)}>+ Add game</button>
+   <button className="btn g" onClick=${()=>{if(del==='reset'){setGames(SEED);setDel(null)}else setDel('reset')}}>${del==='reset'?'Confirm reset?':'Reset sample data'}</button></div></div>
+  <p className="m" style=${{marginBottom:16}}>Demo admin: no login, and changes are saved only in this browser. Only add games whose licenses allow redistribution, with links to authorized files.</p>
+  <div className="panel tw" style=${{marginTop:0}}><table className="at"><thead><tr><th>Title</th><th>Genre</th><th>Year</th><th>Size</th><th/></tr></thead><tbody>
+  ${games.map(g=>html`<tr key=${g.id}><td>${g.title}${g.featured?' ★':''}</td><td>${g.genre}</td><td>${g.year}</td><td>${g.size}</td><td><div className="ac">
+   <button className="btn g s" onClick=${()=>setEd(g)}>Edit</button>
+   <button className=${'btn s '+(del===g.id?'d':'g')} onClick=${()=>{if(del===g.id){setGames(p=>p.filter(x=>x.id!==g.id));setDel(null)}else setDel(g.id)}}>${del===g.id?'Confirm?':'Delete'}</button></div></td></tr>`)}</tbody></table>
+  ${!games.length&&html`<div className="empty">No games yet. Add one above.</div>`}</div>
+  ${ed&&html`<${Form} g=${ed} onSave=${save} onClose=${()=>setEd(null)}/>`}</div>`}
+
+/* ===== src/App.jsx ===== */
+function App(){
+  const route=useRoute(),[games,setGames]=useState(load),[q,setQ]=useState(''),[genre,setGenre]=useState('All'),[browse,setBrowse]=useState(false),[boot,setBoot]=useState(0),[busy,setBusy]=useState(false);
+  useEffect(()=>{const a=setTimeout(()=>setBoot(1),900),b=setTimeout(()=>setBoot(2),1400);return()=>{clearTimeout(a);clearTimeout(b)}},[]);
+  useEffect(()=>save(games),[games]);useEffect(()=>{if(genre!=='All'&&!games.some(g=>g.genre===genre))setGenre('All')},[games,genre]);
+  useEffect(()=>{setBusy(true);const t=setTimeout(()=>setBusy(false),350);return()=>clearTimeout(t)},[route.p,route.id]);
+  const reset=()=>{setQ('');setGenre('All');setBrowse(false)},game=route.p==='game'&&games.find(g=>g.id===route.id);
+  return html`<div>${boot<2&&html`<${Splash} out=${boot===1}/>`}<${Nav} q=${q} setQ=${setQ} page=${route.p} reset=${reset}/>
+  ${busy?html`<${Skeleton}/>`:route.p==='admin'?html`<${Admin} games=${games} setGames=${setGames}/>`:route.p==='game'?(game?html`<${Details} g=${game} games=${games}/>`:html`<div className="w pg"><div className="empty">Game not found. <a href="#home" style=${{color:'#a78bfa'}}>Back to library</a></div></div>`)
+   :html`<${Home} games=${games} q=${q} genre=${genre} setGenre=${setGenre} browse=${browse} setBrowse=${setBrowse}/>`}
+  <footer><div className="w">GAMEVAULT lists only free and open-source games that permit redistribution. Download buttons open each project’s official page. Not affiliated with the developers.</div></footer></div>`}
+ReactDOM.createRoot(document.getElementById('root')).render(html`<${App}/>`);
+</script></body></html>
